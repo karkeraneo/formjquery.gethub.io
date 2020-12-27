@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formDataJquery</title>
+</head>
+
+<body>
+    <label for="u_name1">Enter Name :</label>
+    <input type="text" id="u_name1" name="u_name" value="" placeholder="Enter Name" title="Enter Your Name">
+    <br><br>
+    <label for="u_email">Enter Email :</label>
+    <input type="email" id="u_email" name="u_email" value="" placeholder="Enter Email" title="Enter Your eamil">
+    <br><br>
+    <label for="u_passwd">Enter Password :</label>
+    <input type="password" id="u_passwd" name="u_passwd" value="" placeholder="Enter password"
+        title="Enter Your Password">
+    <br><br>
+    <label for="u_dob">Enter DOB :</label>
+    <input type="date" id="u_dob" name="u_dob" value="" title="Enter Your dob">
+    <br><br>
+    <input type="radio" id="u_gmale" name="u_gender" value="Male" checked>
+    <label for="u_gmale">Male</label>
+    <input type="radio" id="u_female" name="u_gender" value="Female">
+    <label for="u_female">Female</label>
+    <br><br>
+    <label>Check Language :</label>
+    <input type="checkbox" id="u_hindi" name="u_lan" value="Hindi">
+    <label for="u_hindi">Hindi</label>
+    <input type="checkbox" id="u_marathi" name="u_lan" value="Marathi">
+    <label for="u_marathi">Marathi</label>
+    <input type="checkbox" id="u_english" name="u_lan" value="English">
+    <label for="u_english">English</label>
+    <br><br>
+    <label for="u_class">Select Class :</label>
+    <select name="u_class" id="u_class">
+        <option disabled selected>--Select Your Class--</option>
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="Javascript">Javascript</option>
+        <option value="PHP">PHP</option>
+    </select>
+    <br><br>
+    <label for="u_address">Address:</label><br>
+    <textarea name="u_address" id="u_address" cols="20" rows="3">
+        </textarea>
+    <br><br>
+    <input type="button" id="form_submit" name="form_submit" value="Submit">
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(function () {
+        $("#form_submit").click(function (e) {
+            e.preventDefault();
+            var u_name1 = $("#u_name1").val();
+            var u_email = $("#u_email").val();
+            var u_passwd = $("#u_passwd").val();
+            var u_dob = $("#u_dob").val();
+            var u_gender = $("[name='u_gender']:checked").val();
+            var u_lan_arr = [];
+            $.each($("[name='u_lan']:checked"), function () {
+                u_lan_arr.push($(this).val());
+            });
+            var u_lan = u_lan_arr.join();
+            var u_class = $("#u_class").find("option:selected").val();
+            var u_address = $("#u_address").val();
+            var str = "Name : " + u_name1 + "<br>" + "Email : " + u_email + "<br>" + "Password : " + u_passwd + "<br>" + "DOB : " + u_dob + "<br>" + "Gender : " + u_gender + "<br>" + "Language : " + u_lan + "<br>" + "Class : " + u_class + "<br>" + "Address : " + u_address + "<br>";
+            $(".result").html(str);
+        });
+    });
+
+
+</script>
+
+</html>
